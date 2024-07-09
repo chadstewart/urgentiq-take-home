@@ -2,13 +2,18 @@ import Image from "next/image";
 import { Inter } from "next/font/google";
 import { getPeopleSwapi } from "@/lib/api/rest/external-apis/get-people";
 import { useEffect } from "react";
+import { getRandomPics } from "@/lib/api/rest/external-apis/get-random-picture";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
-      console.log(await getPeopleSwapi());
+      const checkApiCall = {
+        people: await getPeopleSwapi(),
+        randomPics: await getRandomPics(),
+      };
+      console.log(checkApiCall);
     };
     fetchData();
   });
