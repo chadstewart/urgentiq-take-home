@@ -1,4 +1,4 @@
-const createParamsString = (paramsObject: {
+export const createParamsString = (paramsObject: {
   [key: string]: string | number;
 }) => {
   let paramsString = "?";

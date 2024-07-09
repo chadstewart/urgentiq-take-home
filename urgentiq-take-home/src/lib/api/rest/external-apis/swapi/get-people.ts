@@ -1,5 +1,6 @@
 import api from "../../../config/api";
 import zod from "zod";
+import { createParamsString } from "@/lib/api/utils/create-params-string";
 
 const getPeopleResponseSchema = zod.object({
   name: zod.string().nullable(),
