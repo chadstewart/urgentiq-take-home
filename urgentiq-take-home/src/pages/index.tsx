@@ -1,9 +1,18 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
+import { getPeopleSwapi } from "@/lib/api/rest/external-apis/get-people";
+import { useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  useEffect(() => {
+    const fetchData = async () => {
+      console.log(await getPeopleSwapi());
+    };
+    fetchData();
+  });
+
   return (
     <main
       className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
