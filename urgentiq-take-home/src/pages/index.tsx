@@ -10,7 +10,7 @@ export default function Home() {
   useEffect(() => {
     const fetchData = async () => {
       const checkApiCall = {
-        people: await getPeopleSwapi(),
+        people: await getPeopleSwapi({ name: "lu" }),
         randomPics: await getRandomPics(),
       };
       console.log(checkApiCall);

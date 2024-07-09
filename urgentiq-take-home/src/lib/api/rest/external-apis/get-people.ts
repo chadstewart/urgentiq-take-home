@@ -27,9 +27,18 @@ const getPeopleSwapiSchema = zod.object({
   results: getPeopleResponseSchema.array(),
 });
 
-export const getPeopleSwapi = async (page?: number) => {
+type ParamsInput = {
+  page?: number;
+  name?: string;
+};
+
+export const getPeopleSwapi = async (swapiPeopleParams: ParamsInput = {}) => {
+  const paramsString = createParamsString(swapiPeopleParams);
+
+  const isParamsNotEmpty = paramsString !== "?";
+
   return await api.get(
     getPeopleSwapiSchema,
-    `https://swapi.dev/api/people${page ? `?page=${page}` : ""}`
+    `https://swapi.dev/api/people${isParamsNotEmpty ? paramsString : ""}`
   );
 };
