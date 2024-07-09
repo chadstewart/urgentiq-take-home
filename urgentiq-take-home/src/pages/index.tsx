@@ -1,8 +1,8 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { getPeopleSwapi } from "@/lib/api/rest/external-apis/get-people";
+import { getPeopleSwapi } from "@/lib/api/rest/external-apis/swapi/get-people";
 import { useEffect } from "react";
-import { getRandomPics } from "@/lib/api/rest/external-apis/get-random-picture";
+import { getRandomPics } from "@/lib/api/rest/external-apis/get-cats/get-random-picture";
 
 const inter = Inter({ subsets: ["latin"] });
 

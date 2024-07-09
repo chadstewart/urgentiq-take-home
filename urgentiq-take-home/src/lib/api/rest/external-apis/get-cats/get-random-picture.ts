@@ -1,5 +1,5 @@
 import zod from "zod";
-import api from "../../config/api";
+import api from "../../../config/api";
 
 export const getRandomPics = async () => {
   const data = await api.get(

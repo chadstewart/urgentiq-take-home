@@ -1,4 +1,4 @@
-import api from "../../config/api";
+import api from "../../../config/api";
 import zod from "zod";
 
 const getPeopleResponseSchema = zod.object({
