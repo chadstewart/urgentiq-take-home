@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { getPeopleSwapi } from "@/lib/api/rest/external-apis/swapi/get-people";
 import { useEffect } from "react";
 import { getRandomPics } from "@/lib/api/rest/external-apis/get-cats/get-random-picture";
+import { getHomeWorldASwapi } from "@/lib/api/rest/external-apis/swapi/get-homeworld";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -12,6 +13,7 @@ export default function Home() {
       const checkApiCall = {
         people: await getPeopleSwapi({ name: "lu" }),
         randomPics: await getRandomPics(),
+        homeworld: await getHomeWorldASwapi("https://swapi.dev/api/planets"),
       };
       console.log(checkApiCall);
     };
