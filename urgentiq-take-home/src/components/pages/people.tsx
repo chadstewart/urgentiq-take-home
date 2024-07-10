@@ -7,6 +7,7 @@ import { getHomeWorldASwapi } from "@/lib/api/rest/external-apis/swapi/get-homew
 
 interface PeopleProps {
   people: {}[];
+  randomPics: {}[];
 }
 
 const inter = Inter({ subsets: ["latin"] });

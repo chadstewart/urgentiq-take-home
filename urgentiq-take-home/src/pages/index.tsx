@@ -1,11 +1,13 @@
 import People from "@/components/pages/people";
+import { getRandomPics } from "@/lib/api/rest/external-apis/get-cats/get-random-picture";
 import { getPeopleSwapi } from "@/lib/api/rest/external-apis/swapi/get-people";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 export default function Home({
   peopleList,
+  randomPics,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <People people={peopleList} />;
+  return <People people={peopleList} randomPics={randomPics} />;
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -17,6 +19,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   if (urlParams.name)
     Object.defineProperty(peopleRequestInput, "name", urlParams.name);
 
-  const peopleResponse = await getPeopleSwapi(peopleRequestInput);
-  return { props: { peopleList: peopleResponse.results } };
+  const peopleApiResponse = await getPeopleSwapi(peopleRequestInput);
+  const peopleList = peopleApiResponse.results;
+
+  const randomPicsApiResponse = await getRandomPics();
+  const randomPics = randomPicsApiResponse;
+
+  return { props: { peopleList, randomPics } };
 };
