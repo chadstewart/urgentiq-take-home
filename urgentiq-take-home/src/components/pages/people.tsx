@@ -1,10 +1,13 @@
 import Image from "next/image";
 import { Card } from "../atoms/card";
 import { Footer } from "../organisms/footer";
+import { getPeopleResponseSchema } from "@/lib/api/utils/types/get-people-types";
+import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
+import zod from "zod";
 
 interface PeopleProps {
-  people: {}[];
-  randomPics: {}[];
+  peopleList: zod.infer<typeof getPeopleResponseSchema>[];
+  randomPics: zod.infer<typeof getRandomPicsSchema>;
 }
 
 export default function People({}: PeopleProps) {

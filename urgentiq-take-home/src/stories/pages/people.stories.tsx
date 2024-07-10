@@ -17,10 +17,10 @@ const testPeople = [
     birth_year: "test",
     gender: "test",
     homeworld: "test",
-    films: "test",
-    species: "test",
-    vehicles: "test",
-    starships: "test",
+    films: ["test"],
+    species: ["test"],
+    vehicles: ["test"],
+    starships: ["test"],
     created: "test",
     edited: "test",
     url: "test",
@@ -81,5 +81,5 @@ const testRandomPics = [
 ];
 
 export const PeopleHomeStory = () => (
-  <People people={testPeople} randomPics={testRandomPics} />
+  <People peopleList={testPeople} randomPics={testRandomPics} />
 );

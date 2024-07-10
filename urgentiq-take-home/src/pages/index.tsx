@@ -7,7 +7,7 @@ export default function Home({
   peopleList,
   randomPics,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  return <People people={peopleList} randomPics={randomPics} />;
+  return <People peopleList={peopleList} randomPics={randomPics} />;
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
