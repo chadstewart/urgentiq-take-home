@@ -3,6 +3,7 @@ import { getPeopleResponseSchema } from "@/lib/api/utils/types/get-people-types"
 import zod from "zod";
 import { Card } from "../atoms/card";
 import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
+import { NormalText } from "../atoms/typography/normal-text";
 
 interface PresentData {
   person: zod.infer<typeof getPeopleResponseSchema>;
@@ -24,7 +25,7 @@ export const PresentCardData = ({
           height={100}
         />
         <div className="flex justify-center items-center w-full">
-          <div>Name: {people.name}</div>
+          <NormalText>Name: {people.name}</NormalText>
         </div>
       </div>
     </Card>
