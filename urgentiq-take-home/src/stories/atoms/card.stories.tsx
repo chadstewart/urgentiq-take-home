@@ -6,4 +6,4 @@ const storyConfig = {
 
 export default storyConfig;
 
-export const PeopleHomeStory = () => <Card>Test</Card>;
+export const CardStory = () => <Card>Test</Card>;
