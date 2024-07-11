@@ -5,6 +5,7 @@ import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types
 import { NormalText } from "../atoms/typography/normal-text";
 import { DialogContent, DialogDescription, DialogHeader } from "../ui/dialog";
 import { HighlightedText } from "../atoms/typography/highlighted-text";
+import { outputProperDate } from "@/lib/api/utils/output-proper-date";
 
 interface PresentModalData {
   person: zod.infer<typeof getPeopleResponseSchema>;
@@ -15,13 +16,6 @@ export const PresentModalData = ({
   person: people,
   randomPic: randomPics,
 }: PresentModalData) => {
-  const outputProperDateString = (dateString: string | null) => {
-    if (dateString === null) return dateString;
-    const temp = new Date(dateString);
-    const formattedDate = `${temp.getDate()}-${temp.getMonth()}-${temp.getFullYear()}`;
-    return formattedDate;
-  };
-
   return (
     <DialogContent className="bg-black">
       <DialogHeader className="flex justify-center font-semibold text-lg items-center w-full">
@@ -41,7 +35,7 @@ export const PresentModalData = ({
               <NormalText>Height: {people.height}m</NormalText>
               <NormalText>Mass: {people.mass}kg</NormalText>
               <NormalText>
-                Date Added: {outputProperDateString(people.created)}
+                Date Added: {outputProperDate(people.created)}
               </NormalText>
               <NormalText>
                 Number of film appearances: {people.films.length}
