@@ -5,13 +5,19 @@ import zod from "zod";
 import { PresentCardData } from "../organisms/present-card-data";
 import { Dialog, DialogTrigger } from "../ui/dialog";
 import { PresentModalData } from "../organisms/present-modal-data";
+import { getHomeworldResponseSchema } from "@/lib/api/utils/types/get-homeworld-types";
 
 interface PeopleProps {
   peopleList: zod.infer<typeof getPeopleResponseSchema>[];
   randomPics: zod.infer<typeof getRandomPicsSchema>[];
+  homeworldList: zod.infer<typeof getHomeworldResponseSchema>[];
 }
 
-export default function People({ peopleList, randomPics }: PeopleProps) {
+export default function People({
+  peopleList,
+  randomPics,
+  homeworldList,
+}: PeopleProps) {
   return (
     <div className="flex justify-center min-h-screen">
       <main
@@ -27,7 +33,11 @@ export default function People({ peopleList, randomPics }: PeopleProps) {
                     randomPic={randomPics[key]}
                   />
                 </DialogTrigger>
-                <PresentModalData person={people} randomPic={randomPics[key]} />
+                <PresentModalData
+                  person={people}
+                  randomPic={randomPics[key]}
+                  homeworld={homeworldList[key]}
+                />
               </Dialog>
             ))}
         </section>

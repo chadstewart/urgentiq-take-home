@@ -5,34 +5,20 @@ import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types
 import { NormalText } from "../atoms/typography/normal-text";
 import { DialogContent, DialogHeader } from "../ui/dialog";
 import { outputProperDate } from "@/lib/api/utils/output-proper-date";
-import { useEffect, useState } from "react";
 import { getHomeworldResponseSchema } from "@/lib/api/utils/types/get-homeworld-types";
-import { getHomeWorldASwapi } from "@/lib/api/rest/external-apis/swapi/get-homeworld";
 import { DialogTitle } from "@radix-ui/react-dialog";
 
 interface PresentModalData {
   person: zod.infer<typeof getPeopleResponseSchema>;
   randomPic: zod.infer<typeof getRandomPicsSchema>;
+  homeworld: zod.infer<typeof getHomeworldResponseSchema>;
 }
 
-export const PresentModalData = ({ person, randomPic }: PresentModalData) => {
-  const [homeworldData, setHomeWorldData] = useState<zod.infer<
-    typeof getHomeworldResponseSchema
-  > | null>();
-
-  useEffect(() => {
-    const handlePageLoad = async () => {
-      try {
-        const homeworldResponse = await getHomeWorldASwapi(person.url);
-        setHomeWorldData(homeworldResponse);
-        console.log(homeworldResponse);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    handlePageLoad();
-  }, [person.url]);
-
+export const PresentModalData = ({
+  person,
+  randomPic,
+  homeworld,
+}: PresentModalData) => {
   return (
     <DialogContent className="bg-black">
       <DialogHeader className="flex justify-center font-semibold text-lg items-center w-full">
@@ -57,16 +43,14 @@ export const PresentModalData = ({ person, randomPic }: PresentModalData) => {
               Number of film appearances: {person.films.length}
             </NormalText>
           </div>
-          {homeworldData && (
-            <div className="flex flex-col gap-2">
-              <NormalText>Name: {homeworldData.name}</NormalText>
-              <NormalText>Terrain: {homeworldData.terrain}</NormalText>
-              <NormalText>Climate: {homeworldData.climate}</NormalText>
-              <NormalText>
-                Number of Residents: {homeworldData.residents.length}
-              </NormalText>
-            </div>
-          )}
+          <div className="flex flex-col gap-2">
+            <NormalText>Name: {homeworld.name}</NormalText>
+            <NormalText>Terrain: {homeworld.terrain}</NormalText>
+            <NormalText>Climate: {homeworld.climate}</NormalText>
+            <NormalText>
+              Number of Residents: {homeworld.residents.length}
+            </NormalText>
+          </div>
         </div>
       </div>
     </DialogContent>
