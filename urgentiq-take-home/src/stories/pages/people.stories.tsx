@@ -23,7 +23,7 @@ const testPeople = [
     starships: ["test"],
     created: "2014-12-09T13:50:51.644000Z",
     edited: "test",
-    url: "test",
+    url: "https://swapi.dev/api/planets/1/",
   },
   {
     name: "test",
@@ -41,7 +41,7 @@ const testPeople = [
     starships: ["test"],
     created: "2014-12-09T13:50:51.644000Z",
     edited: "test",
-    url: "test",
+    url: "https://swapi.dev/api/planets/1/",
   },
   {
     name: "test",
@@ -59,7 +59,7 @@ const testPeople = [
     starships: ["test"],
     created: "2014-12-09T13:50:51.644000Z",
     edited: "test",
-    url: "test",
+    url: "https://swapi.dev/api/planets/1/",
   },
   {
     name: "test",
@@ -77,7 +77,7 @@ const testPeople = [
     starships: ["test"],
     created: "2014-12-09T13:50:51.644000Z",
     edited: "test",
-    url: "test",
+    url: "https://swapi.dev/api/planets/1/",
   },
 ];
 

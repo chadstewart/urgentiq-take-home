@@ -10,22 +10,19 @@ interface PresentCardData {
   randomPic: zod.infer<typeof getRandomPicsSchema>;
 }
 
-export const PresentCardData = ({
-  person: people,
-  randomPic: randomPics,
-}: PresentCardData) => {
+export const PresentCardData = ({ person, randomPic }: PresentCardData) => {
   return (
     <Card>
       <div className="flex gap-2 w-full">
         <Image
           className="rounded-lg"
-          src={randomPics.url}
+          src={randomPic.url}
           alt="Test Image"
           width={150}
           height={150}
         />
         <div className="flex justify-center items-center w-full">
-          <NormalText>Name: {people.name}</NormalText>
+          <NormalText>Name: {person.name}</NormalText>
         </div>
       </div>
     </Card>
