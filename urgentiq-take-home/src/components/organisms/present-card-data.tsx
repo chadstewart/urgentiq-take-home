@@ -5,7 +5,7 @@ import { Card } from "../atoms/card";
 import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
 import { NormalText } from "../atoms/typography/normal-text";
 
-interface PresentData {
+interface PresentCardData {
   person: zod.infer<typeof getPeopleResponseSchema>;
   randomPic: zod.infer<typeof getRandomPicsSchema>;
 }
@@ -13,7 +13,7 @@ interface PresentData {
 export const PresentCardData = ({
   person: people,
   randomPic: randomPics,
-}: PresentData) => {
+}: PresentCardData) => {
   return (
     <Card>
       <div className="flex gap-2 w-full">
@@ -21,8 +21,8 @@ export const PresentCardData = ({
           className="rounded-lg"
           src={randomPics.url}
           alt="Test Image"
-          width={100}
-          height={100}
+          width={150}
+          height={150}
         />
         <div className="flex justify-center items-center w-full">
           <NormalText>Name: {people.name}</NormalText>

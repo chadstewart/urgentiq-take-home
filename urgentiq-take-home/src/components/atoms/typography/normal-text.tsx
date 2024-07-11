@@ -3,5 +3,5 @@ interface NormalTextProps {
 }
 
 export const NormalText = ({ children }: NormalTextProps) => {
-  return <p>{children}</p>;
+  return <p className="text-white">{children}</p>;
 };
