@@ -15,22 +15,41 @@ export const PresentModalData = ({
   person: people,
   randomPic: randomPics,
 }: PresentModalData) => {
+  const outputProperDateString = (dateString: string | null) => {
+    if (dateString === null) return dateString;
+    const temp = new Date(dateString);
+    const formattedDate = `${temp.getDate()}-${temp.getMonth()}-${temp.getFullYear()}`;
+    return formattedDate;
+  };
+
   return (
     <DialogContent className="bg-black">
-      <DialogHeader>
+      <DialogHeader className="flex justify-center font-semibold text-lg items-center w-full">
         <HighlightedText highlightLevel={2}>{people.name}</HighlightedText>
       </DialogHeader>
       <DialogDescription>
-        <div className="flex gap-2 w-full">
+        <div className="flex gap-6 w-full">
           <Image
             className="rounded-lg"
             src={randomPics.url}
             alt="Test Image"
-            width={100}
-            height={100}
+            width={150}
+            height={150}
           />
-          <div className="flex justify-center items-center w-full">
-            <NormalText>Name: {people.gender}</NormalText>
+          <div className="flex flex-col justify-center gap-2 w-full">
+            <div>
+              <NormalText>Height: {people.height}m</NormalText>
+              <NormalText>Mass: {people.mass}kg</NormalText>
+              <NormalText>
+                Date Added: {outputProperDateString(people.created)}
+              </NormalText>
+              <NormalText>
+                Number of film appearances: {people.films.length}
+              </NormalText>
+            </div>
+            <div>
+              <NormalText>Name: {people.gender}</NormalText>
+            </div>
           </div>
         </div>
       </DialogDescription>

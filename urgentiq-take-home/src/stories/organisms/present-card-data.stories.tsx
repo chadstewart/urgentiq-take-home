@@ -1,7 +1,7 @@
 import { PresentCardData } from "@/components/organisms/present-card-data";
 
 const storyConfig = {
-  title: "Design System/Organisms/Present Data",
+  title: "Design System/Organisms/Present Card Data",
 };
 
 export default storyConfig;
