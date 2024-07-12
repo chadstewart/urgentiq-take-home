@@ -2,6 +2,7 @@ import People from "@/components/pages/people";
 import { getRandomPics } from "@/lib/api/rest/external-apis/get-cats/get-random-picture";
 import { getHomeWorldASwapi } from "@/lib/api/rest/external-apis/swapi/get-homeworld";
 import { getPeopleSwapi } from "@/lib/api/rest/external-apis/swapi/get-people";
+import { parseSearchParams } from "@/lib/api/utils/parse-search-params";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 
 export default function Home({
@@ -20,12 +21,7 @@ export default function Home({
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const urlParams = context.query;
-  const peopleRequestInput = {};
-
-  if (urlParams.page)
-    Object.defineProperty(peopleRequestInput, "page", urlParams.page);
-  if (urlParams.name)
-    Object.defineProperty(peopleRequestInput, "name", urlParams.name);
+  const peopleRequestInput = parseSearchParams(urlParams);
 
   const peopleApiResponse = await getPeopleSwapi(peopleRequestInput);
   const peopleList = peopleApiResponse.results;
@@ -34,7 +30,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const randomPics = randomPicsApiResponse;
 
   const homeworldList = await Promise.all(
-    peopleList.map((person) => getHomeWorldASwapi(person.url))
+    peopleList.map((person) => getHomeWorldASwapi(person.homeworld))
   );
 
   return { props: { peopleList, randomPics, homeworldList } };

@@ -3,7 +3,7 @@ import api from "../../../config/api";
 import { createParamsString } from "@/lib/api/utils/create-params-string";
 
 type ParamsInput = {
-  page?: number;
+  page?: string;
   name?: string;
 };
 
@@ -11,6 +11,8 @@ export const getPeopleSwapi = async (swapiPeopleParams: ParamsInput = {}) => {
   const paramsString = createParamsString(swapiPeopleParams);
 
   const isParamsNotEmpty = paramsString !== "?";
+
+  console.log(paramsString);
 
   return await api.get(
     getPeopleSwapiSchema,
