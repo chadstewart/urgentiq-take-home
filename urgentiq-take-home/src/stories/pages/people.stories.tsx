@@ -98,48 +98,12 @@ const testRandomPics = [
   },
 ];
 
-const testHomeworldList = [
-  {
-    name: "test",
-    rotation_period: "test",
-    orbital_period: "test",
-    diameter: "test",
-    climate: "test",
-    gravity: "test",
-    terrain: "test",
-    surface_water: "test",
-    population: "test",
-    residents: ["test"],
-    films: ["test"],
-    created: "test",
-    edited: "test",
-    url: "test",
-  },
-  {
-    name: "test",
-    rotation_period: "test",
-    orbital_period: "test",
-    diameter: "test",
-    climate: "test",
-    gravity: "test",
-    terrain: "test",
-    surface_water: "test",
-    population: "test",
-    residents: ["test"],
-    films: ["test"],
-    created: "test",
-    edited: "test",
-    url: "test",
-  },
-];
-
 const testFunc = () => {};
 
 export const PeopleHomeStory = () => (
   <People
     peopleList={testPeople}
     randomPics={testRandomPics}
-    homeworldList={testHomeworldList}
     nextPage=""
     prevPage=""
     handlePagination={testFunc}

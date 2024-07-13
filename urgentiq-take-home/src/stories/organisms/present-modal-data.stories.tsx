@@ -1,4 +1,4 @@
-import { PresentModalData } from "@/components/organisms/present-modal-data";
+import { PresentModalDataContent } from "@/components/organisms/present-modal-data/present-modal-data";
 
 const storyConfig = {
   title: "Design System/Organisms/Present Modal Data",
@@ -48,10 +48,16 @@ const testHomeworld = {
   url: "test",
 };
 
+const testLoading = {
+  loading: false,
+  error: false,
+};
+
 export const PresentModalDataStory = () => (
-  <PresentModalData
+  <PresentModalDataContent
     person={testPerson}
     randomPic={testRandomPic}
     homeworld={testHomeworld}
+    loadingState={testLoading}
   />
 );

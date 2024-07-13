@@ -1,6 +1,5 @@
 import People from "@/components/pages/people";
 import { getRandomPics } from "@/lib/api/rest/external-apis/get-cats/get-random-picture";
-import { getHomeWorldASwapi } from "@/lib/api/rest/external-apis/swapi/get-homeworld";
 import { getPeopleSwapi } from "@/lib/api/rest/external-apis/swapi/get-people";
 import { parseSearchParams } from "@/lib/api/utils/parse-search-params";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
@@ -9,7 +8,6 @@ import { useRouter } from "next/navigation";
 export default function Home({
   peopleList,
   randomPics,
-  homeworldList,
   nextPage,
   prevPage,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
@@ -23,7 +21,6 @@ export default function Home({
     <People
       peopleList={peopleList}
       randomPics={randomPics}
-      homeworldList={homeworldList}
       nextPage={nextPage}
       prevPage={prevPage}
       handlePagination={handlePagination}
@@ -44,11 +41,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const nextPage = peopleApiResponse.next;
   const prevPage = peopleApiResponse.previous;
 
-  const homeworldList = await Promise.all(
-    peopleList.map((person) => getHomeWorldASwapi(person.homeworld))
-  );
-
   return {
-    props: { peopleList, randomPics, homeworldList, nextPage, prevPage },
+    props: { peopleList, randomPics, nextPage, prevPage },
   };
 };

@@ -5,14 +5,12 @@ import zod from "zod";
 import { PresentCardData } from "../organisms/present-card-data";
 import { Dialog, DialogTrigger } from "../ui/dialog";
 import { PresentModalData } from "../organisms/present-modal-data";
-import { getHomeworldResponseSchema } from "@/lib/api/utils/types/get-homeworld-types";
 import { Searchbar } from "../molecules/search-bar";
 import { useState } from "react";
 
 interface PeopleProps {
   peopleList: zod.infer<typeof getPeopleResponseSchema>[];
   randomPics: zod.infer<typeof getRandomPicsSchema>[];
-  homeworldList: zod.infer<typeof getHomeworldResponseSchema>[];
   nextPage: string;
   prevPage: string;
   handlePagination: (input: string) => void;
@@ -21,7 +19,6 @@ interface PeopleProps {
 export default function People({
   peopleList,
   randomPics,
-  homeworldList,
   nextPage,
   prevPage,
   handlePagination,
@@ -58,7 +55,6 @@ export default function People({
                   <PresentModalData
                     person={people}
                     randomPic={randomPics[key]}
-                    homeworld={homeworldList[key]}
                   />
                 ) : null}
               </Dialog>
