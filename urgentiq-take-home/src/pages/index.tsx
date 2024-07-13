@@ -1,7 +1,5 @@
 import People from "@/components/pages/people";
-import { getRandomPics } from "@/lib/api/rest/external-apis/get-cats/get-random-picture";
-import { getPeopleSwapi } from "@/lib/api/rest/external-apis/swapi/get-people";
-import { parseSearchParams } from "@/lib/api/utils/parse-search-params";
+import { homePageLoad } from "@/lib/home-page-load";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/navigation";
 
@@ -17,6 +15,7 @@ export default function Home({
     const pageString = navUrl.split("?")[1];
     router.push(`/?${pageString}`);
   };
+
   return (
     <People
       peopleList={peopleList}
@@ -29,19 +28,5 @@ export default function Home({
 }
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const urlParams = context.query;
-  const peopleRequestInput = parseSearchParams(urlParams);
-
-  const peopleApiResponse = await getPeopleSwapi(peopleRequestInput);
-  const peopleList = peopleApiResponse.results;
-
-  const randomPicsApiResponse = await getRandomPics();
-  const randomPics = randomPicsApiResponse;
-
-  const nextPage = peopleApiResponse.next;
-  const prevPage = peopleApiResponse.previous;
-
-  return {
-    props: { peopleList, randomPics, nextPage, prevPage },
-  };
+  return homePageLoad(context.query);
 };
