@@ -7,6 +7,7 @@ import { Dialog, DialogTrigger } from "../ui/dialog";
 import { PresentModalData } from "../organisms/present-modal-data";
 import { getHomeworldResponseSchema } from "@/lib/api/utils/types/get-homeworld-types";
 import { Searchbar } from "../molecules/search-bar";
+import { useState } from "react";
 
 interface PeopleProps {
   peopleList: zod.infer<typeof getPeopleResponseSchema>[];
@@ -25,6 +26,9 @@ export default function People({
   prevPage,
   handlePagination,
 }: PeopleProps) {
+  const [modalState, setModalState] = useState(
+    new Array(peopleList.length).fill(false)
+  );
   return (
     <div className="flex justify-center min-h-screen">
       <main
@@ -34,18 +38,29 @@ export default function People({
           <Searchbar />
           {peopleList &&
             peopleList.map((people, key) => (
-              <Dialog key={key}>
+              <Dialog
+                key={key}
+                onOpenChange={() =>
+                  setModalState((prevState) => {
+                    const result = [...prevState];
+                    result[key] = !result[key];
+                    return result;
+                  })
+                }
+              >
                 <DialogTrigger className="w-full">
                   <PresentCardData
                     person={people}
                     randomPic={randomPics[key]}
                   />
                 </DialogTrigger>
-                <PresentModalData
-                  person={people}
-                  randomPic={randomPics[key]}
-                  homeworld={homeworldList[key]}
-                />
+                {modalState[key] ? (
+                  <PresentModalData
+                    person={people}
+                    randomPic={randomPics[key]}
+                    homeworld={homeworldList[key]}
+                  />
+                ) : null}
               </Dialog>
             ))}
           <nav className="flex gap-8">
