@@ -7,6 +7,8 @@ import { DialogContent, DialogHeader } from "../../ui/dialog";
 import { outputProperDate } from "@/lib/api/utils/output-proper-date";
 import { getHomeworldResponseSchema } from "@/lib/api/utils/types/get-homeworld-types";
 import { DialogTitle } from "@radix-ui/react-dialog";
+import { Skeleton } from "@/components/ui/skeleton";
+import { ModalLoading } from "@/components/molecules/loading-state/modal-loading";
 
 interface PresentModalDataContentProps {
   person: zod.infer<typeof getPeopleResponseSchema>;
@@ -26,11 +28,7 @@ export const PresentModalDataContent = ({
 }: PresentModalDataContentProps) => {
   return (
     <DialogContent className="bg-black">
-      {loadingState.loading && (
-        <div className="flex items-center justify-center min-h-[300px] min-w-[300px]">
-          Loading...
-        </div>
-      )}
+      {loadingState.loading && <ModalLoading />}
       {loadingState.error && (
         <div className="flex items-center justify-center min-h-[300px]  min-w-[300px]">
           Something went wrong...
