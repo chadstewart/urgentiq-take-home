@@ -4,7 +4,7 @@ import zod from "zod";
 import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
 import { NormalText } from "../../atoms/typography/normal-text";
 import { DialogContent, DialogHeader } from "../../ui/dialog";
-import { outputProperDate } from "@/lib/api/utils/output-proper-date";
+import { outputProperDate } from "@/lib/output-proper-date";
 import { getHomeworldResponseSchema } from "@/lib/api/utils/types/get-homeworld-types";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { Skeleton } from "@/components/ui/skeleton";

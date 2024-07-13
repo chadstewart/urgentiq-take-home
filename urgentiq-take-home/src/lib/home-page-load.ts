@@ -1,5 +1,5 @@
 import { ParsedUrlQuery } from "querystring";
-import { parseSearchParams } from "./api/utils/parse-search-params";
+import { parseSearchParams } from "./parse-search-params";
 import { getPeopleSwapi } from "./api/rest/external-apis/swapi/get-people";
 import { getRandomPics } from "./api/rest/external-apis/get-cats/get-random-picture";
 
