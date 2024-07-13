@@ -15,8 +15,6 @@ export const PresentCardData = ({ person, randomPic }: PresentCardData) => {
   const jsonObj: { [key: string]: string } = speciesColorDataset;
   const speciesColor = jsonObj[person.species[0]];
 
-  console.log(speciesColor);
-
   return (
     <Card color={speciesColor}>
       <div className="flex gap-2 w-full">

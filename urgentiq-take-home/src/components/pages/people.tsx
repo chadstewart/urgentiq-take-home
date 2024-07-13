@@ -12,12 +12,18 @@ interface PeopleProps {
   peopleList: zod.infer<typeof getPeopleResponseSchema>[];
   randomPics: zod.infer<typeof getRandomPicsSchema>[];
   homeworldList: zod.infer<typeof getHomeworldResponseSchema>[];
+  nextPage: string;
+  prevPage: string;
+  handlePagination: (input: string) => void;
 }
 
 export default function People({
   peopleList,
   randomPics,
   homeworldList,
+  nextPage,
+  prevPage,
+  handlePagination,
 }: PeopleProps) {
   return (
     <div className="flex justify-center min-h-screen">
@@ -42,6 +48,24 @@ export default function People({
                 />
               </Dialog>
             ))}
+          <nav className="flex gap-8">
+            <button
+              className="border min-w-28 rounded-lg p-3"
+              disabled={prevPage ? false : true}
+              onClick={() => handlePagination(prevPage)}
+              style={{ opacity: prevPage ? 1 : 0.5 }}
+            >
+              Previous
+            </button>
+            <button
+              className="border min-w-28 rounded-lg p-3"
+              disabled={nextPage ? false : true}
+              onClick={() => handlePagination(nextPage)}
+              style={{ opacity: nextPage ? 1 : 0.5 }}
+            >
+              Next
+            </button>
+          </nav>
         </section>
         <Footer />
       </main>

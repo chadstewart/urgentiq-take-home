@@ -12,8 +12,6 @@ export const getPeopleSwapi = async (swapiPeopleParams: ParamsInput = {}) => {
 
   const isParamsNotEmpty = paramsString !== "?";
 
-  console.log(paramsString);
-
   return await api.get(
     getPeopleSwapiSchema,
     `https://swapi.dev/api/people${isParamsNotEmpty ? paramsString : ""}`

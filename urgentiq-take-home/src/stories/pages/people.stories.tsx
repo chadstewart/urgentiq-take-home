@@ -133,10 +133,15 @@ const testHomeworldList = [
   },
 ];
 
+const testFunc = () => {};
+
 export const PeopleHomeStory = () => (
   <People
     peopleList={testPeople}
     randomPics={testRandomPics}
     homeworldList={testHomeworldList}
+    nextPage=""
+    prevPage=""
+    handlePagination={testFunc}
   />
 );
