@@ -7,9 +7,8 @@ export const getHomeWorldASwapi = async (
   swapiHomeWorldParams = {}
 ) => {
   const paramsString = createParamsString(swapiHomeWorldParams);
-  const isParamsNotEmpty = paramsString !== "?";
 
-  const urlForApi = homeworldUrl + `${isParamsNotEmpty ? paramsString : ""}`;
+  const urlForApi = homeworldUrl + `${paramsString}`;
 
   return await api.get(getHomeworldResponseSchema, urlForApi);
 };

@@ -9,5 +9,5 @@ export const createParamsString = (paramsObject: {
       paramsString + `${key === "name" ? "search" : key}=${value}&`;
   }
 
-  return paramsString;
+  return paramsString === "?" ? "" : paramsString;
 };
