@@ -1,6 +1,10 @@
-export const outputProperDate = (dateString: string | null) => {
-  if (dateString === null) return dateString;
-  const temp = new Date(dateString);
-  const formattedDate = `${temp.getDate()}-${temp.getMonth()}-${temp.getFullYear()}`;
-  return formattedDate;
+export const outputProperDate = (dateString: string) => {
+  try {
+    const temp = new Date(dateString);
+    if (temp instanceof Date && isNaN(+temp)) return "";
+    const formattedDate = `${temp.getDate()}-${temp.getMonth()}-${temp.getFullYear()}`;
+    return formattedDate;
+  } catch (error) {
+    return "";
+  }
 };
