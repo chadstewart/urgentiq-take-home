@@ -34,6 +34,8 @@ Bonus Points:
 - Tailwind CSS
 - TypeScript
 - Storybook
+- Vitest
+- React Test Library
 
 ### Front-End Framework
 
@@ -60,3 +62,9 @@ Most of the business logic (which are primarily API calls) lives in the getServe
 Search & pagination are available to this project and is enabled by rerouting to the home page with the search parameter in the url. The server will make the API calls with the search parameter and pass the data down as props.
 
 Quick note: To enable adding different colors to the each character card, a script was written to get every available species from SWAPI and generate a json that maps a species randomly to a hex color. That dataset is then leveraged to assign the color depending on the species. It should be noted that several characters do not have any species in assigned.
+
+## Testing
+
+The business logic of the project is tested using Vitest where the presentation logic is tested using Storybook to confirm that looks and feels as intended and Vitest and React Test Library to create snapshot tests for the component. Because the project is so modular, this makes testing very easy to do. This also allows functions that import other functions to rely on the fact they are tested and do not have to directly test their functionalities as well.
+
+It is important to note that tests for the presentation logic is inherently flaky because the presentation logic is the most likely to change so tests will often break during the course of development. While this can be fixed by simply updating the snapshots once the component does what it needs to do on screen, it can be an annoyance.
