@@ -1,12 +1,12 @@
-import { Footer } from "../organisms/footer";
+import { Footer } from "../../organisms/footer";
 import { getPeopleResponseSchema } from "@/lib/api/utils/types/get-people-types";
 import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
 import zod from "zod";
-import { PresentCardData } from "../organisms/present-card-data";
-import { Dialog, DialogTrigger } from "../ui/dialog";
-import { PresentModalData } from "../organisms/present-modal-data";
-import { Searchbar } from "../molecules/search-bar";
-import { useState } from "react";
+import { PresentCardData } from "../../organisms/present-card-data";
+import { Dialog, DialogTrigger } from "../../ui/dialog";
+import { PresentModalData } from "../../organisms/present-modal-data";
+import { Searchbar } from "../../molecules/search-bar";
+import { Dispatch, SetStateAction, useState } from "react";
 import Link from "next/link";
 
 interface PeopleProps {
@@ -16,19 +16,20 @@ interface PeopleProps {
   prevPage: string;
   handlePagination: (input: string) => void;
   isSearch: boolean;
+  modalState: boolean[];
+  setModalState: Dispatch<SetStateAction<boolean[]>>;
 }
 
-export default function People({
+export function PeopleContent({
   peopleList,
   randomPics,
   nextPage,
   prevPage,
   handlePagination,
   isSearch,
+  modalState,
+  setModalState,
 }: PeopleProps) {
-  const [modalState, setModalState] = useState(
-    new Array(peopleList.length).fill(false)
-  );
   return (
     <div className="flex justify-center min-h-screen">
       <main

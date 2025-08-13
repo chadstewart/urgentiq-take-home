@@ -1,4 +1,4 @@
-import People from "@/components/pages/people";
+import { PeopleContent } from "@/components/pages/people/people";
 
 const storyConfig = {
   title: "Design System/Pages/Home - People",
@@ -101,11 +101,14 @@ const testRandomPics = [
 const testFunc = () => {};
 
 export const PeopleHomeStory = () => (
-  <People
+  <PeopleContent
     peopleList={testPeople}
     randomPics={testRandomPics}
     nextPage=""
     prevPage=""
     handlePagination={testFunc}
+    modalState={[false]}
+    setModalState={testFunc}
+    isSearch
   />
 );

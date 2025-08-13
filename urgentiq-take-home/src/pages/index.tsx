@@ -10,20 +10,12 @@ export default function Home({
   prevPage,
   isSearch,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
-  const router = useRouter();
-
-  const handlePagination = (navUrl: string) => {
-    const pageString = navUrl.split("?")[1];
-    router.push(`/?${pageString}`);
-  };
-
   return (
     <People
       peopleList={peopleList}
       randomPics={randomPics}
       nextPage={nextPage}
       prevPage={prevPage}
-      handlePagination={handlePagination}
       isSearch={isSearch}
     />
   );
