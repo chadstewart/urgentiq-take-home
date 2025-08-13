@@ -1,5 +1,5 @@
 import People from "@/components/pages/people";
-import { homePageLoad } from "@/lib/home-page-load";
+import { homePageLoad } from "@/services/home-page-load";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
 import { useRouter } from "next/navigation";
 

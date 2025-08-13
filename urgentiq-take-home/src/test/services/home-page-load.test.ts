@@ -1,4 +1,4 @@
-import { homePageLoad } from "@/lib/home-page-load";
+import { homePageLoad } from "@/services/home-page-load";
 import { ParsedUrlQuery } from "querystring";
 import { describe, expect, it, vi } from "vitest";
 

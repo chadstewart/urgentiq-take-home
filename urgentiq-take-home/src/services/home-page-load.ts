@@ -1,7 +1,7 @@
 import { ParsedUrlQuery } from "querystring";
-import { parseSearchParams } from "./parse-search-params";
-import { getPeopleSwapi } from "./api/rest/external-apis/swapi/get-people";
-import { getRandomPics } from "./api/rest/external-apis/get-cats/get-random-picture";
+import { parseSearchParams } from "../lib/parse-search-params";
+import { getPeopleSwapi } from "../lib/api/rest/external-apis/swapi/get-people";
+import { getRandomPics } from "../lib/api/rest/external-apis/get-cats/get-random-picture";
 
 export const homePageLoad = async (paramsObj: ParsedUrlQuery) => {
   const urlParams = paramsObj;
