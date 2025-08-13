@@ -8,6 +8,7 @@ export default function Home({
   randomPics,
   nextPage,
   prevPage,
+  isSearch,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   const router = useRouter();
 
@@ -23,6 +24,7 @@ export default function Home({
       nextPage={nextPage}
       prevPage={prevPage}
       handlePagination={handlePagination}
+      isSearch={isSearch}
     />
   );
 }

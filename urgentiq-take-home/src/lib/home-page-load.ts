@@ -5,7 +5,12 @@ import { getRandomPics } from "./api/rest/external-apis/get-cats/get-random-pict
 
 export const homePageLoad = async (paramsObj: ParsedUrlQuery) => {
   const urlParams = paramsObj;
+
+  let isSearch = false;
+
   const peopleRequestInput = parseSearchParams(urlParams);
+
+  if (peopleRequestInput.name) isSearch = true;
 
   const peopleApiResponse = await getPeopleSwapi(peopleRequestInput);
   const peopleList = peopleApiResponse.results;
@@ -17,6 +22,6 @@ export const homePageLoad = async (paramsObj: ParsedUrlQuery) => {
   const prevPage = peopleApiResponse.previous;
 
   return {
-    props: { peopleList, randomPics, nextPage, prevPage },
+    props: { peopleList, randomPics, nextPage, prevPage, isSearch },
   };
 };

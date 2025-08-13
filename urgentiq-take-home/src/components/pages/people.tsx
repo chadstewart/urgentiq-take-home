@@ -7,6 +7,7 @@ import { Dialog, DialogTrigger } from "../ui/dialog";
 import { PresentModalData } from "../organisms/present-modal-data";
 import { Searchbar } from "../molecules/search-bar";
 import { useState } from "react";
+import Link from "next/link";
 
 interface PeopleProps {
   peopleList: zod.infer<typeof getPeopleResponseSchema>[];
@@ -14,6 +15,7 @@ interface PeopleProps {
   nextPage: string;
   prevPage: string;
   handlePagination: (input: string) => void;
+  isSearch: boolean;
 }
 
 export default function People({
@@ -22,6 +24,7 @@ export default function People({
   nextPage,
   prevPage,
   handlePagination,
+  isSearch,
 }: PeopleProps) {
   const [modalState, setModalState] = useState(
     new Array(peopleList.length).fill(false)
@@ -32,6 +35,7 @@ export default function People({
         className={`flex border-l border-r max-w-5xl min-w-[500px] flex-col items-center justify-between`}
       >
         <section className="flex flex-col gap-6 z-10 max-w-5xl w-full items-center justify-between font-mono p-12 text-sm">
+          {isSearch ? <Link href="/">Go Home</Link> : null}
           <Searchbar />
           {peopleList &&
             peopleList.map((people, key) => (
