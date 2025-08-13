@@ -1,13 +1,12 @@
 import Image from "next/image";
-import { getPeopleResponseSchema } from "@/lib/api/utils/types/get-people-types";
-import zod from "zod";
+import { peopleDto } from "@/models/get-people-types";
 import { Card } from "../../atoms/card";
-import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
+import { randomPics } from "@/models/get-random-pics-types";
 import { NormalText } from "../../atoms/typography/normal-text";
 
 interface PresentCardData {
-  person: zod.infer<typeof getPeopleResponseSchema>;
-  randomPic: zod.infer<typeof getRandomPicsSchema>;
+  person: peopleDto;
+  randomPic: randomPics;
   speciesColor: string;
 }
 

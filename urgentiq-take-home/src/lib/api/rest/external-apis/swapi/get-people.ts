@@ -1,4 +1,4 @@
-import { getPeopleSwapiSchema } from "@/lib/api/utils/types/get-people-types";
+import { getPeopleSwapiSchema } from "@/models/get-people-types";
 import api from "../../../config/api";
 import { createParamsString } from "@/lib/api/utils/create-params-string";
 

@@ -7,4 +7,8 @@ export const getRandomPicsSchema = zod.object({
   url: zod.string(),
 });
 
+export type randomPics = zod.infer<typeof getRandomPicsSchema>;
+
 export const getRandomPicsResponse = getRandomPicsSchema.array();
+
+export type randomPicsDto = zod.infer<typeof getRandomPicsResponse>;

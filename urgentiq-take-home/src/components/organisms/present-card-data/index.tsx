@@ -1,12 +1,11 @@
-import { getPeopleResponseSchema } from "@/lib/api/utils/types/get-people-types";
-import zod from "zod";
-import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
+import { peopleDto } from "@/models/get-people-types";
+import { randomPics } from "@/models/get-random-pics-types";
 import { PresentCardDataContent } from "./present-card-data";
 import speciesColorDataset from "@/lib/species-to-colors/speciesToColor.json";
 
 interface PresentCardData {
-  person: zod.infer<typeof getPeopleResponseSchema>;
-  randomPic: zod.infer<typeof getRandomPicsSchema>;
+  person: peopleDto;
+  randomPic: randomPics;
 }
 
 export const PresentCardData = ({ person, randomPic }: PresentCardData) => {

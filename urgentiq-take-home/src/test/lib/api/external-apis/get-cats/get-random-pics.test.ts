@@ -1,7 +1,6 @@
 import { describe, expectTypeOf, it, vi } from "vitest";
 import api from "@/lib/api/config/api";
-import zod from "zod";
-import { getRandomPicsResponse } from "@/lib/api/utils/types/get-random-pics-types";
+import { randomPicsDto } from "@/models/get-random-pics-types";
 import { getRandomPics } from "@/lib/api/rest/external-apis/get-cats/get-random-picture";
 
 describe("External API Function: Get Homeworld", () => {
@@ -22,7 +21,7 @@ describe("External API Function: Get Homeworld", () => {
       })
     );
 
-    type typeToTest = zod.infer<typeof getRandomPicsResponse>;
+    type typeToTest = randomPicsDto;
 
     const apiData = await getRandomPics();
 

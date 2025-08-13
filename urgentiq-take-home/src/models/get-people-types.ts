@@ -19,9 +19,13 @@ export const getPeopleResponseSchema = zod.object({
   url: zod.string().nullable(),
 });
 
+export type peopleDto = zod.infer<typeof getPeopleResponseSchema>;
+
 export const getPeopleSwapiSchema = zod.object({
   count: zod.number(),
   next: zod.string().nullable(),
   previous: zod.string().nullable(),
   results: getPeopleResponseSchema.array(),
 });
+
+export type peopleSwapiDto = zod.infer<typeof getPeopleSwapiSchema>;

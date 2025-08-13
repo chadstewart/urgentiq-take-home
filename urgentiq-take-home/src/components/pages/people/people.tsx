@@ -1,7 +1,6 @@
 import { Footer } from "../../organisms/footer";
-import { getPeopleResponseSchema } from "@/lib/api/utils/types/get-people-types";
-import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
-import zod from "zod";
+import { peopleDto } from "@/models/get-people-types";
+import { randomPics } from "@/models/get-random-pics-types";
 import { PresentCardData } from "../../organisms/present-card-data";
 import { Dialog, DialogTrigger } from "../../ui/dialog";
 import { PresentModalData } from "../../organisms/present-modal-data";
@@ -10,8 +9,8 @@ import { Dispatch, SetStateAction, useState } from "react";
 import Link from "next/link";
 
 interface PeopleProps {
-  peopleList: zod.infer<typeof getPeopleResponseSchema>[];
-  randomPics: zod.infer<typeof getRandomPicsSchema>[];
+  peopleList: peopleDto[];
+  randomPics: randomPics[];
   nextPage: string;
   prevPage: string;
   handlePagination: (input: string) => void;

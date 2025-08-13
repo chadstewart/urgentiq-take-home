@@ -1,13 +1,12 @@
-import { getPeopleResponseSchema } from "@/lib/api/utils/types/get-people-types";
-import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
-import zod from "zod";
+import { peopleDto } from "@/models/get-people-types";
+import { randomPics } from "@/models/get-random-pics-types";
 import { useState } from "react";
 import { PeopleContent } from "./people";
 import { useRouter } from "next/navigation";
 
 interface PeopleProps {
-  peopleList: zod.infer<typeof getPeopleResponseSchema>[];
-  randomPics: zod.infer<typeof getRandomPicsSchema>[];
+  peopleList: peopleDto[];
+  randomPics: randomPics[];
   nextPage: string;
   prevPage: string;
   isSearch: boolean;

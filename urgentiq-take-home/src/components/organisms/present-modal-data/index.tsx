@@ -1,19 +1,17 @@
-import zod from "zod";
-import { getPeopleResponseSchema } from "@/lib/api/utils/types/get-people-types";
+import { peopleDto } from "@/models/get-people-types";
 import { PresentModalDataContent } from "./present-modal-data";
-import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
-import { getHomeworldResponseSchema } from "@/lib/api/utils/types/get-homeworld-types";
+import { randomPics } from "@/models/get-random-pics-types";
+import { homeworldDto } from "@/models/get-homeworld-types";
 import { useEffect, useState } from "react";
 import { getHomeWorldASwapi } from "@/lib/api/rest/external-apis/swapi/get-homeworld";
 
 interface PresentModalData {
-  person: zod.infer<typeof getPeopleResponseSchema>;
-  randomPic: zod.infer<typeof getRandomPicsSchema>;
+  person: peopleDto;
+  randomPic: randomPics;
 }
 
 export const PresentModalData = ({ person, randomPic }: PresentModalData) => {
-  const [homeworld, setHomeworld] =
-    useState<zod.infer<typeof getHomeworldResponseSchema>>();
+  const [homeworld, setHomeworld] = useState<homeworldDto>();
 
   const [loadingState, setLoadingState] = useState({
     loading: true,

@@ -1,8 +1,7 @@
 import { describe, expect, expectTypeOf, it, vi } from "vitest";
 import api from "@/lib/api/config/api";
 import { getPeopleSwapi } from "@/lib/api/rest/external-apis/swapi/get-people";
-import zod from "zod";
-import { getPeopleSwapiSchema } from "@/lib/api/utils/types/get-people-types";
+import { peopleSwapiDto } from "@/models/get-people-types";
 
 describe("External API Function: Get People", () => {
   vi.mock("@/lib/api/config/api");
@@ -39,7 +38,7 @@ describe("External API Function: Get People", () => {
       })
     );
 
-    type typeToTest = zod.infer<typeof getPeopleSwapiSchema>;
+    type typeToTest = peopleSwapiDto;
 
     const apiData = await getPeopleSwapi();
 

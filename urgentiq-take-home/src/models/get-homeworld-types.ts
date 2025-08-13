@@ -16,3 +16,5 @@ export const getHomeworldResponseSchema = zod.object({
   edited: zod.string(),
   url: zod.string(),
 });
+
+export type homeworldDto = zod.infer<typeof getHomeworldResponseSchema>;

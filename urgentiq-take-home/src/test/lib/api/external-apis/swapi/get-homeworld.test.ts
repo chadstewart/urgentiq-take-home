@@ -1,8 +1,7 @@
 import { describe, expect, expectTypeOf, it, vi } from "vitest";
 import api from "@/lib/api/config/api";
 import { getHomeWorldASwapi } from "@/lib/api/rest/external-apis/swapi/get-homeworld";
-import zod from "zod";
-import { getHomeworldResponseSchema } from "@/lib/api/utils/types/get-homeworld-types";
+import { homeworldDto } from "@/models/get-homeworld-types";
 
 describe("External API Function: Get Homeworld", () => {
   vi.mock("@/lib/api/config/api");
@@ -32,7 +31,7 @@ describe("External API Function: Get Homeworld", () => {
       })
     );
 
-    type typeToTest = zod.infer<typeof getHomeworldResponseSchema>;
+    type typeToTest = homeworldDto;
 
     const apiData = await getHomeWorldASwapi("test");
 

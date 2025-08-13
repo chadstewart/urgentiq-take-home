@@ -1,5 +1,5 @@
 import api from "../../../config/api";
-import { getRandomPicsResponse } from "@/lib/api/utils/types/get-random-pics-types";
+import { getRandomPicsResponse } from "@/models/get-random-pics-types";
 
 export const getRandomPics = async () => {
   const data = await api.get(

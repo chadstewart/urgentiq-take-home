@@ -1,19 +1,17 @@
 import Image from "next/image";
-import { getPeopleResponseSchema } from "@/lib/api/utils/types/get-people-types";
-import zod from "zod";
-import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
+import { peopleDto } from "@/models/get-people-types";
+import { randomPics } from "@/models/get-random-pics-types";
 import { NormalText } from "../../atoms/typography/normal-text";
 import { DialogContent, DialogHeader } from "../../ui/dialog";
 import { outputProperDate } from "@/lib/output-proper-date";
-import { getHomeworldResponseSchema } from "@/lib/api/utils/types/get-homeworld-types";
+import { homeworldDto } from "@/models/get-homeworld-types";
 import { DialogTitle } from "@radix-ui/react-dialog";
-import { Skeleton } from "@/components/ui/skeleton";
 import { ModalLoading } from "@/components/molecules/loading-state/modal-loading";
 
 interface PresentModalDataContentProps {
-  person: zod.infer<typeof getPeopleResponseSchema>;
-  randomPic: zod.infer<typeof getRandomPicsSchema>;
-  homeworld: zod.infer<typeof getHomeworldResponseSchema> | undefined;
+  person: peopleDto;
+  randomPic: randomPics;
+  homeworld: homeworldDto | undefined;
   loadingState: {
     loading: boolean;
     error: boolean;
