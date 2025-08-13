@@ -1,20 +1,21 @@
 import Image from "next/image";
 import { getPeopleResponseSchema } from "@/lib/api/utils/types/get-people-types";
 import zod from "zod";
-import { Card } from "../atoms/card";
+import { Card } from "../../atoms/card";
 import { getRandomPicsSchema } from "@/lib/api/utils/types/get-random-pics-types";
-import { NormalText } from "../atoms/typography/normal-text";
-import speciesColorDataset from "@/lib/species-to-colors/speciesToColor.json";
+import { NormalText } from "../../atoms/typography/normal-text";
 
 interface PresentCardData {
   person: zod.infer<typeof getPeopleResponseSchema>;
   randomPic: zod.infer<typeof getRandomPicsSchema>;
+  speciesColor: string;
 }
 
-export const PresentCardData = ({ person, randomPic }: PresentCardData) => {
-  const jsonObj: { [key: string]: string } = speciesColorDataset;
-  const speciesColor = jsonObj[person.species[0]];
-
+export const PresentCardDataContent = ({
+  person,
+  randomPic,
+  speciesColor,
+}: PresentCardData) => {
   return (
     <Card color={speciesColor}>
       <div className="flex gap-2 w-full">

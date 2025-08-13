@@ -1,4 +1,4 @@
-import { PresentCardData } from "@/components/organisms/present-card-data";
+import { PresentCardData } from "@/components/organisms/present-card-data/present-card-data";
 
 const storyConfig = {
   title: "Design System/Organisms/Present Card Data",

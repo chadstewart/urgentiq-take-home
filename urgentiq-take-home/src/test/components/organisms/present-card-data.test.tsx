@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { render } from "@testing-library/react";
-import { PresentCardData } from "@/components/organisms/present-card-data";
+import { PresentCardData } from "@/components/organisms/present-card-data/present-card-data";
 
 describe("React Component: Normal Text Typography", () => {
   it("Should render correctly", () => {
