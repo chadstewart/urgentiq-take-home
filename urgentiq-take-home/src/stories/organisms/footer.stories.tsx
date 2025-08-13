@@ -1,4 +1,4 @@
-import { Footer } from "@/components/organisms/footer";
+import { FooterContent } from "@/components/organisms/footer/footer";
 
 const storyConfig = {
   title: "Design System/Organisms/Footer",
@@ -6,4 +6,4 @@ const storyConfig = {
 
 export default storyConfig;
 
-export const FooterStory = () => <Footer />;
+export const FooterStory = () => <FooterContent />;
