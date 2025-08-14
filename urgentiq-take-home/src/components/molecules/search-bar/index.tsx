@@ -2,6 +2,12 @@ import { useRouter } from "next/navigation";
 import { ChangeEvent, FormEvent, useState } from "react";
 import { SearchbarContent } from "./search-bar-content";
 
+export interface SearchbarProps {
+  handleSubmit: (event: FormEvent) => void;
+  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
+  searchValue: string;
+}
+
 export const Searchbar = () => {
   const router = useRouter();
   const [searchValue, setSearchValue] = useState("");

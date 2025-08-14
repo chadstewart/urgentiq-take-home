@@ -1,7 +1,6 @@
 import People from "@/components/pages/people";
 import { homePageLoad } from "@/services/home-page-load";
 import type { GetServerSideProps, InferGetServerSidePropsType } from "next";
-import { useRouter } from "next/navigation";
 
 export default function Home({
   peopleList,

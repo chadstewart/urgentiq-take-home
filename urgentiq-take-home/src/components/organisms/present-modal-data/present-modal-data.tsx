@@ -1,22 +1,10 @@
 import Image from "next/image";
-import { peopleDto } from "@/models/get-people-types";
-import { randomPics } from "@/models/get-random-pics-types";
 import { NormalText } from "../../atoms/typography/normal-text";
 import { DialogContent, DialogHeader } from "../../ui/dialog";
 import { outputProperDate } from "@/lib/output-proper-date";
-import { homeworldDto } from "@/models/get-homeworld-types";
 import { DialogTitle } from "@radix-ui/react-dialog";
 import { ModalLoading } from "@/components/molecules/loading-state/modal-loading";
-
-interface PresentModalDataContentProps {
-  person: peopleDto;
-  randomPic: randomPics;
-  homeworld: homeworldDto | undefined;
-  loadingState: {
-    loading: boolean;
-    error: boolean;
-  };
-}
+import { PresentModalDataContentProps } from ".";
 
 export const PresentModalDataContent = ({
   person,

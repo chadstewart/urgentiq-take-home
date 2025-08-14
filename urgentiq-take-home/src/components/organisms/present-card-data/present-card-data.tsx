@@ -1,20 +1,13 @@
 import Image from "next/image";
-import { peopleDto } from "@/models/get-people-types";
 import { Card } from "../../atoms/card";
-import { randomPics } from "@/models/get-random-pics-types";
 import { NormalText } from "../../atoms/typography/normal-text";
-
-interface PresentCardData {
-  person: peopleDto;
-  randomPic: randomPics;
-  speciesColor: string;
-}
+import { PresentCardDataContentProps } from ".";
 
 export const PresentCardDataContent = ({
   person,
   randomPic,
   speciesColor,
-}: PresentCardData) => {
+}: PresentCardDataContentProps) => {
   return (
     <Card color={speciesColor}>
       <div className="flex gap-2 w-full">

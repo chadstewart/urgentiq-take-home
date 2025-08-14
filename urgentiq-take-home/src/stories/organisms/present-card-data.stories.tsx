@@ -1,4 +1,4 @@
-import { PresentCardDataContent } from "@/components/organisms/present-card-data/present-card-data";
+import { PresentCardDataContentProps } from "@/components/organisms/present-card-data/present-card-data";
 
 const storyConfig = {
   title: "Design System/Organisms/Present Card Data",
@@ -32,7 +32,7 @@ const testRandomPic = {
 };
 
 export const PresentCardDataStory = () => (
-  <PresentCardDataContent
+  <PresentCardDataContentProps
     person={testPerson}
     randomPic={testRandomPic}
     speciesColor=""

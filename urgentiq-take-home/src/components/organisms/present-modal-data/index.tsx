@@ -5,12 +5,25 @@ import { homeworldDto } from "@/models/get-homeworld-types";
 import { useEffect, useState } from "react";
 import { getHomeWorldASwapi } from "@/lib/api/rest/external-apis/swapi/get-homeworld";
 
-interface PresentModalData {
+interface PresentModalDataProps {
   person: peopleDto;
   randomPic: randomPics;
 }
 
-export const PresentModalData = ({ person, randomPic }: PresentModalData) => {
+export interface PresentModalDataContentProps {
+  person: peopleDto;
+  randomPic: randomPics;
+  homeworld: homeworldDto | undefined;
+  loadingState: {
+    loading: boolean;
+    error: boolean;
+  };
+}
+
+export const PresentModalData = ({
+  person,
+  randomPic,
+}: PresentModalDataProps) => {
   const [homeworld, setHomeworld] = useState<homeworldDto>();
 
   const [loadingState, setLoadingState] = useState({

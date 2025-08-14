@@ -1,10 +1,4 @@
-import { ChangeEvent, FormEvent } from "react";
-
-interface SearchbarProps {
-  handleSubmit: (event: FormEvent) => void;
-  handleChange: (event: ChangeEvent<HTMLInputElement>) => void;
-  searchValue: string;
-}
+import { SearchbarProps } from ".";
 
 export const SearchbarContent = ({
   handleSubmit,

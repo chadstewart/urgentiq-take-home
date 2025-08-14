@@ -8,6 +8,12 @@ interface PresentCardData {
   randomPic: randomPics;
 }
 
+export interface PresentCardDataContentProps {
+  person: peopleDto;
+  randomPic: randomPics;
+  speciesColor: string;
+}
+
 export const PresentCardData = ({ person, randomPic }: PresentCardData) => {
   const jsonObj: { [key: string]: string } = speciesColorDataset;
   const speciesColor = jsonObj[person.species[0]];
