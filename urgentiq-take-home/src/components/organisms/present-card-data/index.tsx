@@ -1,7 +1,7 @@
 import { peopleDto } from "@/models/get-people-types";
 import { randomPics } from "@/models/get-random-pics-types";
 import { PresentCardDataContent } from "./present-card-data";
-import speciesColorDataset from "@/lib/species-to-colors/speciesToColor.json";
+import { outputSpeciesColor } from "@/services/output-species-color";
 
 interface PresentCardData {
   person: peopleDto;
@@ -15,8 +15,8 @@ export interface PresentCardDataContentProps {
 }
 
 export const PresentCardData = ({ person, randomPic }: PresentCardData) => {
-  const jsonObj: { [key: string]: string } = speciesColorDataset;
-  const speciesColor = jsonObj[person.species[0]];
+  const speciesColor = outputSpeciesColor(person);
+
   return (
     <PresentCardDataContent
       person={person}
