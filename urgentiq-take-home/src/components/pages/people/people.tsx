@@ -1,23 +1,10 @@
 import { Footer } from "../../organisms/footer";
-import { peopleDto } from "@/models/get-people-types";
-import { randomPics } from "@/models/get-random-pics-types";
 import { PresentCardData } from "../../organisms/present-card-data";
 import { Dialog, DialogTrigger } from "../../ui/dialog";
 import { PresentModalData } from "../../organisms/present-modal-data";
 import { Searchbar } from "../../molecules/search-bar";
-import { Dispatch, SetStateAction, useState } from "react";
 import Link from "next/link";
-
-interface PeopleProps {
-  peopleList: peopleDto[];
-  randomPics: randomPics[];
-  nextPage: string;
-  prevPage: string;
-  handlePagination: (input: string) => void;
-  isSearch: boolean;
-  modalState: boolean[];
-  setModalState: Dispatch<SetStateAction<boolean[]>>;
-}
+import { PeopleContentProps } from ".";
 
 export function PeopleContent({
   peopleList,
@@ -27,8 +14,8 @@ export function PeopleContent({
   handlePagination,
   isSearch,
   modalState,
-  setModalState,
-}: PeopleProps) {
+  handleStateUpdate,
+}: PeopleContentProps) {
   return (
     <div className="flex justify-center min-h-screen">
       <main
@@ -39,16 +26,7 @@ export function PeopleContent({
           <Searchbar />
           {peopleList &&
             peopleList.map((people, key) => (
-              <Dialog
-                key={key}
-                onOpenChange={() =>
-                  setModalState((prevState) => {
-                    const result = [...prevState];
-                    result[key] = !result[key];
-                    return result;
-                  })
-                }
-              >
+              <Dialog key={key} onOpenChange={() => handleStateUpdate(key)}>
                 <DialogTrigger className="w-full">
                   <PresentCardData
                     person={people}

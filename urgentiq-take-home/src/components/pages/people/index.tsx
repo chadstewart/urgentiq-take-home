@@ -12,6 +12,17 @@ interface PeopleProps {
   isSearch: boolean;
 }
 
+export interface PeopleContentProps {
+  peopleList: peopleDto[];
+  randomPics: randomPics[];
+  nextPage: string;
+  prevPage: string;
+  handlePagination: (input: string) => void;
+  isSearch: boolean;
+  modalState: boolean[];
+  handleStateUpdate: (key: number) => void;
+}
+
 export default function People({
   peopleList,
   randomPics,
@@ -29,6 +40,15 @@ export default function People({
   const [modalState, setModalState] = useState<boolean[]>(
     new Array(peopleList.length).fill(false)
   );
+
+  const handleStateUpdate = (key: number) => {
+    setModalState((prevState) => {
+      const result = [...prevState];
+      result[key] = !result[key];
+      return result;
+    });
+  };
+
   return (
     <PeopleContent
       peopleList={peopleList}
@@ -38,7 +58,7 @@ export default function People({
       handlePagination={handlePagination}
       isSearch={isSearch}
       modalState={modalState}
-      setModalState={setModalState}
+      handleStateUpdate={handleStateUpdate}
     />
   );
 }
