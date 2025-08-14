@@ -2,7 +2,7 @@ import { homePageLoad } from "@/services/home-page-load";
 import { ParsedUrlQuery } from "querystring";
 import { describe, expect, it, vi } from "vitest";
 
-describe("Util Function: Home Page Load", () => {
+describe("Service Function: Home Page Load", () => {
   vi.mock("@/lib/parse-search-params", () => {
     return {
       parseSearchParams: vi.fn(() => "test"),
