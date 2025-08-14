@@ -57,7 +57,13 @@ ShadCN/UI was used as the component library. ShadCN/UI is specifically a Tailwin
 
 ## Methodology
 
-Most of the business logic (which are primarily API calls) lives in the getServerSideProps in the people's component in the pages router folder. The thought process was to keep as much of the business logic on the server as possible since we have access to one levearging Next.js. Once the API calls get the relevant data, they pass it to the people's component as props which will do the work of rendering the app.
+The architecture of this project is mainly MVVM (Model View ViewModel). This architecture is expressed in this way:
+
+- `Components` are the views of the application and mainly has the HTML and CSS needed to render the component defined
+- `Models` are TypeScript types as well as types inferred from Zod schemas
+- `ViewModels` are expressed in the index.ts of appropriate components and mainly focus on routing the data passed into the component properly
+
+The business logic for the application lives primarily in the `services` folder. It consists of two services, for loading the home page and for output colors for specific species. Since this is a Next.js application, loading the home page is done on the server to leverage SSR that Next.js is known for which should give better performance since the server will likely be able to fetch data faster and does not need to rely on the client's network connection. It also makes it easier for search engines to parse the page since HTML & CSS is being sent back.
 
 Search & pagination are available to this project and is enabled by rerouting to the home page with the search parameter in the url. The server will make the API calls with the search parameter and pass the data down as props.
 
